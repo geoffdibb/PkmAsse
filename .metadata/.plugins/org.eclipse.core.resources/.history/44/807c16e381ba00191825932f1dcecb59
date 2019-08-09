@@ -1,0 +1,5 @@
+package com.BAE.domain;
+
+public class Account {
+
+}

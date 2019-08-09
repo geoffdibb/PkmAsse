@@ -1,0 +1,50 @@
+package com.BAE.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Account {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String accountnumber;
+
+	private String userName;
+	
+
+	
+	public Account() {
+
+	}
+
+	public Account(int accnum, String userName) {
+		this.accnum = accnum;
+		this.userName = userName;
+
+
+
+	}
+
+	public String getuserName() {
+		return userName;
+	}
+
+	public void setuserName(String userName) {
+		this.userName = userName;
+	}
+	
+	
+	public String getaccnum() {
+		return accountnumber;
+	}
+
+	public void setaccnum(String accountnumber) {
+		this.accountnumber = accountnumber;
+	}
+
+
+
+}
