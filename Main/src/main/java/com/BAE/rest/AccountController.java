@@ -3,10 +3,7 @@ package com.BAE.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -59,32 +55,10 @@ public class AccountController {
 	public boolean findAccount(@PathVariable Long accountId) {
 
 		return service.findAccount(accountId);
- 
-	}
+	} 
+	
 	
 
-	@GetMapping("/findbynumber/{accountID}/{number}")
-	public ResponseEntity<Object> findByNumber(@PathVariable("accountID") Long accountId ,@PathVariable("number") String number) {
-		if (service.findAccount(accountId)) {
-		
-		return service.findByNumber(number, accountId);
-		}
-		else {
-		return null;
-		}
-	}
-
-
-	@GetMapping("/findbyname/{accountID}/{name}")
-	public ResponseEntity<Object> findByName(@PathVariable("accountID") Long accountId ,@PathVariable("name") String name) {
-		if (service.findAccount(accountId)) {
-			
-		return service.findByName(name);
-		}
-		else
-		return null;
-		
-	}
 	
 	@GetMapping("/findpokemonbyname/{accountID}/{name}")
 	public ResponseEntity<Object> createAccountMicro(@PathVariable("accountID") Long accountId ,@PathVariable("name") String name) {

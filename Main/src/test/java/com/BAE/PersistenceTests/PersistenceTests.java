@@ -20,4 +20,28 @@ public class PersistenceTests {
 		acc.setuserName("Zilla");
 		Assert.assertEquals(acc.getuserName(), "Zilla");
 	}
+	@Test
+	public void testGetteraccountnumber() {
+
+		Assert.assertEquals(acc.getaccountnumber(), "Zilla");
+	}
+
+	@Test
+	public void testSetuseraccountnumber() {
+		acc.setaccountnumber("Zilla");
+		Assert.assertEquals(acc.getaccountnumber(), "Zilla");
+	}
+
+	@Test
+	public void testGetterid() {
+
+		Assert.assertEquals(acc.getId(), 2);
+	}
+
+	@Test
+	public void testSetuserid() {
+		acc.setId(2);
+		Assert.assertEquals(acc.getId(), 2);
+	}
+
 }

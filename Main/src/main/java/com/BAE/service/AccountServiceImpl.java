@@ -1,20 +1,12 @@
 package com.BAE.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.BAE.domain.Account;
@@ -67,39 +59,7 @@ public class AccountServiceImpl implements AccountService {
 				
 	}
 	
-	@Override
-	public ResponseEntity<Object> findByNumber(String number, Long accountId) {
-
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("user-agent",
-				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-		
-		Search acc = new Search();
-		
-		acc.setsearchterm(number);
-		acc.setTime(LocalDateTime.now().toString());
-		acc.setId(accountId);
-		
-		sendToQueue(acc);
-		
-		return restTemplate.exchange("https://pokeapi.co/api/v2/pokemon/"+number, HttpMethod.GET, entity, Object.class);
-
-	}
-
-	
-	@Override
-	public ResponseEntity<Object> findByName(String name) {
-
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("user-agent",
-				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-
-		return restTemplate.exchange("https://pokeapi.co/api/v2/pokemon/"+name, HttpMethod.GET, entity, Object.class);
-
-	}
-	
+		 
 	
 	public ResponseEntity<Object> getpokemon(String name) {
 

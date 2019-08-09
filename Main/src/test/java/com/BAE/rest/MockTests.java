@@ -29,8 +29,8 @@ public class MockTests {
 	@Mock
 	RestTemplate resttemp;
 	
-	private static final Account fakeaccount1 = new Account(1, "Kevin", "Mcfreedom");
-	private static final Account fakeaccount2 = new Account(2, "Mike", "Chowda");
+	private static final Account fakeaccount1 = new Account(1l, "Kevin", "Mcfreedom");
+	private static final Account fakeaccount2 = new Account(2l, "Mike", "Chowda");
 	
 	@Test
 	public void getAllAccounts() {
