@@ -5,3 +5,6 @@
 1565341724003	Delete element
 1565341827560	Rename package 'com.BAE.RestTests'
 1565341920649	Rename package 'com.BAE.Service'
+1565348168703	Copy compilation unit
+1565351867700	Rename type 'SentAccount'
+1565352059978	Encapsulate field 'time'

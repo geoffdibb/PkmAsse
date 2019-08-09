@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,6 +54,36 @@ public class AccountController {
 		return new ResponseEntity<>(retVal, HttpStatus.CREATED);
 	}
 
-		
+	@GetMapping("/findAccount/{accountId}")
+	public boolean findAccount(@PathVariable Long accountId) {
 
+		return service.findAccount(accountId);
+ 
+	}
+	
+
+	@GetMapping("/findbynumber/{accountID}/{number}")
+	public ResponseEntity<Object> findByNumber(@PathVariable("accountID") Long accountId ,@PathVariable("number") String number) {
+		if (service.findAccount(accountId)) {
+		
+		return service.findByNumber(number);
+		}
+		else {
+		return null;
+		}
+	}
+
+
+	@GetMapping("/findbyname/{accountID}/{name}")
+	public ResponseEntity<Object> findByName(@PathVariable("accountID") Long accountId ,@PathVariable("name") String name) {
+		if (service.findAccount(accountId)) {
+			
+		return service.findByName(name);
+		}
+		else
+		return null;
+		
+	}
 }
+
+
