@@ -5,7 +5,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 import com.BAE.domain.MongoAccountRepo;
-import com.BAE.domain.repository.SentAccount;
+import com.BAE.domain.repository.Search;
 
 @Component
 public class Reciever {
@@ -15,7 +15,7 @@ public class Reciever {
     private MongoAccountRepo repo;
 
     @JmsListener(destination = "AccountQueue", containerFactory = "myFactory")
-    public void receiveMessage(SentAccount sentAccount) {
-        repo.save(sentAccount);
+    public void receiveMessage(Search search) {
+        repo.save(search);
     }
 }

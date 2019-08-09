@@ -1,6 +1,6 @@
 package com.BAE.domain.repository;
 
-public class SentAccount {
+public class Search {
 
     private Long id;
 
@@ -8,19 +8,21 @@ public class SentAccount {
 
     private String userName;
     
-    private String search;
+    private String searchterm;
+    
+    private String time;
 
     
 
-    public SentAccount(){}
+    public Search(){}
 
-	public String getsearch() {
-		return search;
+	public String getsearchterm() {
+		return searchterm;
 	}
 
 
-	public void setId(String search) {
-		this.search = search;
+	public void setsearchterm(String searchterm) {
+		this.searchterm = searchterm;
 	}
 
 	public Long getId() {
@@ -53,11 +55,21 @@ public class SentAccount {
 	}
 
 
-	public SentAccount(Long id, String accountnumber, String userName ,String search) {
+	public Search(Long id, String accountnumber, String userName ,String searchterm, String time) {
 		super();
 		this.id = id;
 		this.accountnumber = accountnumber;
 		this.userName = userName;
+		this.searchterm = searchterm;
+		this.time = time;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
    

@@ -68,21 +68,20 @@ public class AccountServiceImpl implements AccountService {
 	}
 	
 	@Override
-	public ResponseEntity<Object> findByNumber(String number) {
+	public ResponseEntity<Object> findByNumber(String number, Long accountId) {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("user-agent",
 				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
 		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 		
-//		Search acc = new Search();
-//		acc.setsearchterm(number);
-//		acc.setTime(LocalDateTime.now().toString());
-//		acc.getAccountnumber();
-//		acc.getId();
-//		acc.getUserName();
-//		
-//		sendToQueue(acc);
+		Search acc = new Search();
+		
+		acc.setsearchterm(number);
+		acc.setTime(LocalDateTime.now().toString());
+		acc.setId(accountId);
+		
+		sendToQueue(acc);
 		
 		return restTemplate.exchange("https://pokeapi.co/api/v2/pokemon/"+number, HttpMethod.GET, entity, Object.class);
 
@@ -101,8 +100,18 @@ public class AccountServiceImpl implements AccountService {
 
 	}
 	
-//    private void sendToQueue(Search search){
-//        jmsTemplate.convertAndSend("AccountQueue", search);
-//    }
+	
+	public ResponseEntity<Object> getpokemon(String name) {
+
+		return restTemplate.exchange("http://localhost:8082/pokemon/getpokemon/" + name,
+				HttpMethod.GET, null, Object.class);
+		
+		
+	}
+	
+
+    private void sendToQueue(Search search){
+        jmsTemplate.convertAndSend("AccountQueue", search);
+    }
 
 }

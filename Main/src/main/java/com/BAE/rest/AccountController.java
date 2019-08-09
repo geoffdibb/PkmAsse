@@ -25,6 +25,7 @@ import com.BAE.service.AccountService;
 @RestController
 @RequestMapping("/Account")
 public class AccountController {
+	
 	@Autowired
 	public AccountController( AccountService service, RestTemplate restTemplate) {
 		this.service = service;
@@ -66,7 +67,7 @@ public class AccountController {
 	public ResponseEntity<Object> findByNumber(@PathVariable("accountID") Long accountId ,@PathVariable("number") String number) {
 		if (service.findAccount(accountId)) {
 		
-		return service.findByNumber(number);
+		return service.findByNumber(number, accountId);
 		}
 		else {
 		return null;
@@ -79,6 +80,18 @@ public class AccountController {
 		if (service.findAccount(accountId)) {
 			
 		return service.findByName(name);
+		}
+		else
+		return null;
+		
+	}
+	
+	@GetMapping("/findpokemonbyname/{accountID}/{name}")
+	public ResponseEntity<Object> createAccountMicro(@PathVariable("accountID") Long accountId ,@PathVariable("name") String name) {
+		
+		if (service.findAccount(accountId)) {
+			
+		return service.getpokemon(name);
 		}
 		else
 		return null;

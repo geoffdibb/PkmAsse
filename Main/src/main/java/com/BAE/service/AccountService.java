@@ -15,8 +15,10 @@ public interface AccountService {
 
 	boolean findAccount(Long accountId);
 	
-	ResponseEntity<Object> findByNumber(String number);
+	ResponseEntity<Object> findByNumber(String number, Long accountId);
 
 	ResponseEntity<Object> findByName(String name);
+
+	ResponseEntity<Object> getpokemon( String name);
 
 }
